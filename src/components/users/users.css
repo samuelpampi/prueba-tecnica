@@ -1,0 +1,99 @@
+.users-section{
+    width: 100%;
+    height: 100%;
+    padding: 60px 40px 40px 40px;
+}
+
+.title2{
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.users-table{
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #dbdce0;
+}
+
+.table-header th{
+    background-color: #dbdce0;
+    color: #111827;
+    font-weight: 600;
+    padding: 10px 20px;
+    text-align: left;
+}
+
+.table-body td{
+    padding: 10px 20px;
+    color: #111827;
+    text-align: left;
+}
+
+.view-user-detail{
+    color: black;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.user-detail-section{
+    width: 100%;
+    height: 100%;
+    padding: 60px 40px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.user-data{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+    background-color: white;
+    padding: 50px 20px;
+    border: 1px solid #dbdce0;
+    border-radius: 10px;
+}
+
+.user-form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.user-form label{
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 5px;
+}
+
+.user-form input {
+    padding: 10px;
+    border: 1px solid #dbdce0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.user-form select{
+    padding: 10px;
+    border: 1px solid #dbdce0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.save-button{
+    border: 1px solid #dbdce0;
+    border-radius: 5px;
+    background-color: #111827;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.navigate-users{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+

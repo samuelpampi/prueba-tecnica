@@ -1,0 +1,28 @@
+.nav-bar{
+    background: #F6CA44;
+    background: linear-gradient(180deg,rgba(246, 202, 68, 1) 0%, rgba(255, 157, 0, 1) 100%);
+    color: black;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 20px;
+    width: 200px;
+}
+
+.nav-bar ul{
+    list-style: none;
+    width: 100%;
+}
+
+.nav-bar li{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.nav-link{
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+}

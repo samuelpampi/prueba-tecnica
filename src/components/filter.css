@@ -1,0 +1,10 @@
+.filters-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.filter-item {
+    display: flex;
+    gap: 5px;
+}
