@@ -14,7 +14,7 @@ export default function UserRow({user}: {user: Usuario}) {
             <td>{surname}</td>
             <td>{user.role_name}</td>
             <td>
-                <Link to={`/${user.id}`} className="view-user-detail">Ver detalles</Link>
+                <Link to={`/users/${user.id}`} className="view-user-detail">Ver detalles</Link>
             </td>
         </tr>
     )

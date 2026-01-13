@@ -1,31 +1,25 @@
 import './App.css'
-import Header from './components/Header';
-import Nav from './components/Nav';
-import { BrowserRouter, Route, Routes} from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
 import UserDetail from './pages/UserDatail';
 import Users from './pages/Users';
+import Layout from './components/Layout';
 
 
 
 function App() {
 
   return (
-    <>
-      <Header />
-      <BrowserRouter>
-        <main>
-          <Nav/>
-          
-            <Routes>
-              <Route path="/" element={<Users/>}/>
-              <Route path="/:id" element={<UserDetail/>}/>
-            </Routes>
-                
-          
-        </main>
-      </BrowserRouter>
-      
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          {/* Redirigir la ruta raíz a /users */}
+          <Route index element={<Navigate to="/users" replace />} />
+
+          <Route path="/users" element={<Users/>}/>
+          <Route path="/users/:id" element={<UserDetail/>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

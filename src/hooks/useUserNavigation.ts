@@ -20,7 +20,7 @@ export function useUserNavigation({ filteredIds, filteredCount, id }: UseUserNav
         if (currentIndex > -1 && currentIndex < filteredCount - 1) {
             console.log("Navegando al siguiente usuario");
             const nextUserId: number = filteredIds[currentIndex + 1];
-            navigate(`/${nextUserId}`);
+            navigate(`/users/${nextUserId}`);
 
         } else {
             console.log("No hay siguiente usuario");
@@ -38,7 +38,7 @@ export function useUserNavigation({ filteredIds, filteredCount, id }: UseUserNav
         if (currentIndex > 0) {
             console.log("Navegando al usuario anterior");
             const previousUserId: number = filteredIds[currentIndex - 1];
-            navigate(`/${previousUserId}`);
+            navigate(`/users/${previousUserId}`);
 
         } else {
             console.log("No hay usuario anterior");
