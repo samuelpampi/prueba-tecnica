@@ -1,33 +1,21 @@
 import type { Role } from "../models/role";
-import { useSearchParams } from "react-router-dom"
 import "./filter.css"
+import { useUserFilters } from "../hooks/useUserFilters";
 
-export default function Filters({roles}: {roles: Role[]}){
-    const [searchParams, setSearchParams] = useSearchParams()
+type FiltersProps = {
+    roles: Role[];
+};
 
-    const roleValue = searchParams.get("role") ?? ""
-    const nameValue = searchParams.get("name") ?? ""
+export default function Filters({ roles }: FiltersProps) {
+    const { role, name, setRole, setName } = useUserFilters();
 
-    const updateParam = (key: "role" | "name", value: string) => {
-        setSearchParams(params => {
-            const next = new URLSearchParams(params);
-
-            if (value) {
-                next.set(key, value);
-            } else {
-                next.delete(key);
-            }
-
-            return next;
-        });
+    // Manejadores de cambio para los filtros
+    const onRoleChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+        setRole(e.target.value);
     }
 
-    const onRoleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        updateParam("role", e.target.value);
-    }
-
-    const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        updateParam("name", e.target.value);
+    const onNameChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        setName(e.target.value);
     }
 
     return(
@@ -39,7 +27,7 @@ export default function Filters({roles}: {roles: Role[]}){
                 {/* Filtro para roles */}
                 <div className="filter-item">
                     <label htmlFor="role">Role:</label>
-                    <select id="role" name="role" value={roleValue} onChange={onRoleChange}>
+                    <select id="role" name="role" value={role} onChange={onRoleChange}>
                         <option value="">Todos</option>
                         {roles.map((role: Role) => (
                             <option key={role.id} value={String(role.id)}>
@@ -52,7 +40,7 @@ export default function Filters({roles}: {roles: Role[]}){
                 {/* Filtro para nombre */}
                 <div className="filter-item">
                     <label htmlFor="name">Nombre:</label>
-                    <input type="text" id="name" name="name" value={nameValue} placeholder="Buscar por nombre" onChange={onNameChange}/>
+                    <input type="text" id="name" name="name" value={name} placeholder="Buscar por nombre" onChange={onNameChange}/>
                 </div>
             </div>
         </div>

@@ -1,33 +1,13 @@
 
-import { useEffect, useState } from "react";
 import UserRow from "./UserRow";
-import { getUsers } from "../../api/users-api";
-import type { Usuario } from "../../models/user";
 import "./users.css"
-import { useSearchParams } from "react-router-dom";
+import { useUserFilters } from "../../hooks/useUserFilters";
+import { useUsers } from "../../hooks/useUsers";
 
 
 export default function UsersTable() {
-    const [users, setUsers] = useState<Usuario[]>([])
-    const [searchParams] = useSearchParams()
-
-    //Parametros de busqueda
-    const role = searchParams.get("role") ?? ""
-    const name = searchParams.get("name") ?? ""
-
-    //Cargamos los usuarios al montar el componente
-    useEffect(() => {
-        const cargarUsuarios = async () => {
-        const usuarios = await getUsers({
-            role: role || undefined,
-            name: name || undefined,
-            });
-
-        setUsers(usuarios)
-        }
-
-        cargarUsuarios()
-    }, [role, name]);
+    const { role, name } = useUserFilters(); //Obtener los filtros actuales
+    const { users } = useUsers({ role, name }); //Obtener los usuarios filtrados
 
     return(
         <table className="users-table">

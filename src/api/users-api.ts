@@ -4,16 +4,30 @@ import axios from "axios";
 
 const API_URL = "https://dev.justnetsystems.com/pruebareact/api/";
 
+type GetUsersParams = {
+  role?: string;
+  name?: string;
+};
+
+type GetUsersQueryParams = {
+  filters: {
+    role_id?: string;
+    name?: string;
+  };
+};
+
 //Peticion para obtener todos los usuarios
-export async function getUsers({role, name}: {role?: string, name?: string}): Promise<Usuario[]> {
+export async function getUsers({ role, name }: GetUsersParams): Promise<Usuario[]> {
     
+    const params: GetUsersQueryParams = {
+        filters: {
+            role_id: role,
+            name: name,
+        },
+    };
+
     const response = await axios.get<ApiResponse<ApiUsersResponse>>(API_URL + "users" , {
-        params: {
-            filters: {
-                role_id: role,
-                name: name,
-            }
-        }
+        params,
     });
 
     return response.data.data.data;
